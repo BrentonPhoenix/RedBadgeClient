@@ -7,6 +7,9 @@ type StateType = {
     urlProfilePic: string,
     urlProfilePicAltID: string,
     sessionToken: string,
+    postID?: string,
+    topicID?: string,
+    singleFetchReturn?: any,
     fetchReturn?: any
     password?: string,
     bio?: string,

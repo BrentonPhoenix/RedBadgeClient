@@ -1,6 +1,35 @@
 import { Component } from "react";
-import PropsType from "../Props.State/PropsType";
-import StateType from "../Props.State/StateType";
+// import PropsType from "../Props.State/PropsType";
+// import StateType from "../Props.State/StateType";
+
+
+
+type StateData={
+    login: boolean,
+    userUserID: string,
+    username: string,
+    role: string,
+    isBanned: boolean,
+    urlProfilePic: string,
+    urlProfilePicAltID: string,
+    sessionToken: string,
+    postID?: string,
+    topicID?: string,
+    singleFetchReturn?: any,
+    fetchReturn?: any
+    password?: string,
+    bio?: string,
+    passwordKEY?: string,
+}
+
+type PropsType={
+    state: StateData
+}
+
+type StateType={
+
+}
+
 
 class Login extends Component <PropsType,StateType>{
 constructor(props: PropsType){
@@ -24,7 +53,7 @@ constructor(props: PropsType){
         event.preventDefault()
         fetch('http://localhost:4500/users/login', {
             method: 'POST',
-            body: JSON.stringify({username: this.state.username ,password: this.state.password}), 
+            body: JSON.stringify({username: this.props.state.username ,password: this.props.state.password}), 
             headers: new Headers({
                 'Content-Type': 'application/json'
             })
@@ -57,11 +86,11 @@ constructor(props: PropsType){
                 <form onSubmit={this.handleSubmit}>
                 <label htmlFor="username">Username</label>
                 <br/>
-                <input type="text" value={this.state.username} onChange={(event) => this.changeHandlerUsername(event)}/>
+                <input type="text" value={this.props.state.username} onChange={(event) => this.changeHandlerUsername(event)}/>
                 <br/>
                 <label htmlFor="username">Password</label>
                 <br/>
-                <input type="password" value={this.state.password} onChange={(event) => this.changeHandlerPassword(event)}/>
+                <input type="password" value={this.props.state.password} onChange={(event) => this.changeHandlerPassword(event)}/>
                 <br/>
                 <button>Login</button>
                 </form>

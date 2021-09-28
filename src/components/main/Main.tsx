@@ -9,7 +9,12 @@ import Admin from "../admin/Admin";
 import Profile from '../bio/Profile'
 // import PropsType from "../Props.State/PropsType";
 import StateType from "../Props.State/StateType";
+import MyTopics from "../bio/MyTopics";
 
+
+type PropsType = {
+  
+}
 
 class Main extends Component <{}, StateType>{
 
@@ -34,11 +39,12 @@ class Main extends Component <{}, StateType>{
         return(
             <>
                 <Switch>
-                    <Route exact path='/' ><Home/></Route>
-                    <Route exact path='/profile' ><Profile/></Route>
-                    <Route exact path='/topic' ><Topic/></Route>
-                    <Route exact path="/post" ><Post/></Route>
-                    <Route path="/admin" ><Admin/></Route>
+                    <Route exact path='/' ><Home state={this.state}/></Route>
+                    <Route exact path='/profile' ><Profile state={this.state}/></Route>
+                    <Route exact path='/topic' ><Topic state={this.state}/></Route>
+                    <Route exact path='/mytopics' ><MyTopics state={this.state}/></Route>
+                    <Route exact path="/post" ><Post state={this.state}/></Route>
+                    <Route path="/admin" ><Admin state={this.state}/></Route>
                     <Route path="*" component={()=> <div>'404 page not found'</div>}/>
                 </Switch>
             </>

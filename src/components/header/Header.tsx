@@ -1,7 +1,11 @@
 import { Component } from "react";
-import PropsType from "../Props.State/PropsType";
+// import PropsType from "../Props.State/PropsType";
 import StateType from "../Props.State/StateType";
 import {Link } from 'react-router-dom'
+
+type PropsType = {
+  
+}
 
 class Header extends Component <PropsType, StateType> {
 //contains 4 buttons that link to home, profile, create topic, and logout. ALSO ADD protected route to an empty mod options page! Need at least two types of users to meet the Definition of Done.

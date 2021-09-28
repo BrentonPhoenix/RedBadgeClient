@@ -2,25 +2,31 @@ import { Component } from "react";
 // import PropsType from "../Props.State/PropsType";
 // import StateType from "../Props.State/StateType";
 
-type StateType = {
+type StateData={
     login: boolean,
     userUserID: string,
     username: string,
-    password: string,
     role: string,
     isBanned: boolean,
     urlProfilePic: string,
     urlProfilePicAltID: string,
     sessionToken: string,
+    postID?: string,
+    topicID?: string,
+    singleFetchReturn?: any,
+    fetchReturn?: any
+    password?: string,
     bio?: string,
     passwordKEY?: string,
-
-
-}
-type PropsType = {
-
 }
 
+type PropsType={
+    state: StateData
+}
+
+type StateType={
+
+}
 
 class Register extends Component<PropsType, StateType> {
     constructor(props: PropsType){
@@ -46,7 +52,7 @@ class Register extends Component<PropsType, StateType> {
         event.preventDefault()
         fetch('http://localhost:4500/users/register', {
             method: 'POST',
-            body: JSON.stringify({username: this.state.username ,password: this.state.password}), 
+            body: JSON.stringify({username: this.props.state.username ,password: this.props.state.password}), 
             headers: new Headers({
                 'Content-Type': 'application/json'
             })
@@ -76,7 +82,7 @@ class Register extends Component<PropsType, StateType> {
                 method: 'GET',
                 headers: new Headers({ 
                     'Content-type': 'application/json',
-                    'Authorization': `Bearer ${this.state.sessionToken}`
+                    'Authorization': `Bearer ${this.props.state.sessionToken}`
                 })
           }).then(res => res.json())
           .then(json => this.setState({login: true,role: json[1]}))
@@ -102,11 +108,11 @@ class Register extends Component<PropsType, StateType> {
                 <form onSubmit={this.handleSubmit}>
                 <label htmlFor="username">Username</label>
                 <br/>
-                <input type="text" value={this.state.username} onChange={(event) => this.changeHandlerUsername(event)}/>
+                <input type="text" value={this.props.state.username} onChange={(event) => this.changeHandlerUsername(event)}/>
                 <br/>
                 <label htmlFor="username">Password</label>
                 <br/>
-                <input type="password" value={this.state.password} onChange={(event) => this.changeHandlerPassword(event)}/>
+                <input type="password" value={this.props.state.password} onChange={(event) => this.changeHandlerPassword(event)}/>
                 <br/>
                 <button type="submit">Register</button>
                 </form>

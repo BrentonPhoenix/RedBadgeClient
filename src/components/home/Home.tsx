@@ -2,12 +2,33 @@ import React, {Component} from "react";
 import Auth from "../auth/Auth"
 // import Header from "../header/Header";
 // import PropsType from "../Props.State/PropsType";
-import StateType from "../Props.State/StateType";
+// import StateType from "../Props.State/StateType";
 // import DisplayFetch from "./DisplayFetch";
 
+type StateData={
+    login: boolean,
+    userUserID: string,
+    username: string,
+    role: string,
+    isBanned: boolean,
+    urlProfilePic: string,
+    urlProfilePicAltID: string,
+    sessionToken: string,
+    postID?: string,
+    topicID?: string,
+    singleFetchReturn?: any,
+    fetchReturn?: any
+    password?: string,
+    bio?: string,
+    passwordKEY?: string,
+}
 
-type PropsType = {
-  
+type PropsType={
+    state: StateData
+}
+
+type StateType={
+
 }
 
 class Home extends Component <PropsType, StateType> {
@@ -32,11 +53,11 @@ class Home extends Component <PropsType, StateType> {
                 method: 'GET',
                 headers: new Headers({ 
                     'Content-type': 'application/json',
-                    'Authorization': `Bearer ${this.state.sessionToken}`
+                    'Authorization': `Bearer ${this.props.state.sessionToken}`
                 })
           }).then(res => res.json())
           .then(json => this.setState({fetchReturn: json}))
-          .then(() => console.log(this.state.fetchReturn))
+          .then(() => console.log(this.props.state.fetchReturn))
         }
         // componentDidUpdate(){
         //     console.log(this.state.fetchReturn)
@@ -47,9 +68,9 @@ class Home extends Component <PropsType, StateType> {
         return(
             <div className="main">
                 
-                <Auth/>
+                <Auth state={this.props.state} />
                 {
-                    this.state.fetchReturn.map((current:any, index:any)=> {
+                    this.props.state.fetchReturn.map((current:any, index:any)=> {
                         return(
                             <div key={index}>
                               <div>{current.url === ""? null: <img src={current.url} alt={current.urlImageID}/>}</div> 

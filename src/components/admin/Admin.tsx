@@ -1,6 +1,33 @@
 import { Component } from "react";
 
-class Admin extends Component {
+
+
+type StateData={
+    login: boolean,
+    userUserID: string,
+    username: string,
+    role: string,
+    isBanned: boolean,
+    urlProfilePic: string,
+    urlProfilePicAltID: string,
+    sessionToken: string,
+    postID?: string,
+    topicID?: string,
+    singleFetchReturn?: any,
+    fetchReturn?: any
+    password?: string,
+    bio?: string,
+    passwordKEY?: string,
+}
+
+type PropsType={
+    state: StateData
+}
+
+type StateType={
+
+}
+class Admin extends Component<PropsType, StateType> {
 
     render(){
         return(

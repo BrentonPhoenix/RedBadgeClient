@@ -1,7 +1,35 @@
 import { Component } from "react";
-import StateType from "../Props.State/StateType";
+// import StateType from "../Props.State/StateType";
 
-class MyTopics extends Component <{}, StateType> {
+
+type StateData={
+    login: boolean,
+    userUserID: string,
+    username: string,
+    role: string,
+    isBanned: boolean,
+    urlProfilePic: string,
+    urlProfilePicAltID: string,
+    sessionToken: string,
+    postID?: string,
+    topicID?: string,
+    singleFetchReturn?: any,
+    fetchReturn?: any
+    password?: string,
+    bio?: string,
+    passwordKEY?: string,
+}
+
+type PropsType={
+    state: StateData
+}
+
+type StateType={
+
+}
+
+
+class MyTopics extends Component <PropsType, StateType> {
 
 
 
@@ -14,7 +42,7 @@ class MyTopics extends Component <{}, StateType> {
                 })
           }).then(res => res.json())
           .then(json => this.setState({fetchReturn: json}))
-          .then(() => console.log(this.state.fetchReturn))
+          .then(() => console.log(this.props.state.fetchReturn))
         }
 
     render(){
@@ -34,6 +62,10 @@ class MyTopics extends Component <{}, StateType> {
                     <br/>
                     <button>Create Topic</button>
                     </form>
+                </div>
+
+                <div>
+                    {/* map here to display my topics, make them links*/}
                 </div>
             </div>
         )
