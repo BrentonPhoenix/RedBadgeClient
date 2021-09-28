@@ -1,14 +1,13 @@
 import { Component } from "react";
 
-class Admin extends Component {
-
+class Post extends Component{
     render(){
         return(
             <div>
-                <h1>This is the Admin component</h1>
+                <h1>This is the Post Component</h1>
             </div>
         )
     }
 }
 
-export default Admin
+export default Post

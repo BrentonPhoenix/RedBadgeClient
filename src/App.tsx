@@ -1,15 +1,19 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import Home from './components/home/Home'
+import Main from './components/main/Main'
+import Header from './components/header/Header';
 
 
-function App() {
+function App()  {
+  // const clearToken = () => {
+  //   localStorage.clear();
+  // }
+
+
+
   return (
     <div className="App">
-
-      <Home/>
-      
+      <Header/>
+      <Main/>
     </div>
   );
 }
