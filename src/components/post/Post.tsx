@@ -5,7 +5,7 @@ import { Component } from "react";
 type StateData={
     login: boolean,
     userUserID: string,
-    username: string,
+    // username: string,
     role: string,
     isBanned: boolean,
     urlProfilePic: string,
@@ -22,6 +22,7 @@ type StateData={
 
 type PropsType={
     state: StateData
+    postID: any
 }
 
 type StateType={
@@ -74,6 +75,7 @@ class Post extends Component <PropsType,StateType>{
     render(){
         return(
             <div>
+                <h2>THis is the Post component</h2>
                 {/* picture title keywords*/}
                 {/* edit and delete  */}
                 {/* Content goes here */}

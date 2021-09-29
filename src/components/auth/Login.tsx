@@ -7,12 +7,12 @@ import { Component } from "react";
 type StateData={
     login: boolean,
     userUserID: string,
-    username: string,
     role: string,
     isBanned: boolean,
     urlProfilePic: string,
     urlProfilePicAltID: string,
     sessionToken: string,
+    username?: string,
     postID?: string,
     topicID?: string,
     singleFetchReturn?: any,
@@ -23,11 +23,20 @@ type StateData={
 }
 
 type PropsType={
-    state: StateData
+    state: StateData,
+    updateToken: any
 }
 
 type StateType={
-
+    userUserID: string,
+        login: boolean,
+        username: string,
+        password: string,
+        role: string,
+        urlProfilePic: string,
+        urlProfilePicAltID: string,
+        isBanned: boolean,
+        sessionToken: string
 }
 
 
@@ -46,21 +55,21 @@ constructor(props: PropsType){
         sessionToken: ""
     }
     this.handleSubmit = this.handleSubmit.bind(this)
-    this.updateToken = this.updateToken.bind(this)
+    // this.props.updateToken = this.updateToken.bind(this)
 }
 
     handleSubmit(event: any) {
         event.preventDefault()
         fetch('http://localhost:4500/users/login', {
             method: 'POST',
-            body: JSON.stringify({username: this.props.state.username ,password: this.props.state.password}), 
+            body: JSON.stringify({username: this.state.username ,password: this.state.password}), 
             headers: new Headers({
                 'Content-Type': 'application/json'
             })
         })
         .then(response => response.json())
         .then( data => {
-            this.updateToken(data.sessionToken)
+            this.props.updateToken(data.sessionToken)
             console.log(data)
         })
         .catch((err:any)=> console.log(err))
@@ -74,10 +83,10 @@ constructor(props: PropsType){
     }
 
 
-    updateToken(newToken: any){
-        localStorage.setItem('token', newToken)
-        this.setState({ sessionToken: newToken})
-      }
+    // updateToken(newToken: any){
+    //     localStorage.setItem('token', newToken)
+    //     this.setState({ sessionToken: newToken})
+    //   }
 
     render(){
         return(
@@ -86,7 +95,7 @@ constructor(props: PropsType){
                 <form onSubmit={this.handleSubmit}>
                 <label htmlFor="username">Username</label>
                 <br/>
-                <input type="text" value={this.props.state.username} onChange={(event) => this.changeHandlerUsername(event)}/>
+                <input type="text" value={this.state.username} onChange={(event) => this.changeHandlerUsername(event)}/>
                 <br/>
                 <label htmlFor="username">Password</label>
                 <br/>

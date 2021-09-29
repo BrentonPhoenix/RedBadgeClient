@@ -6,13 +6,13 @@ import Register from "./Register";
 type StateData={
     login: boolean,
     userUserID: string,
-    username: string,
     role: string,
     isBanned: boolean,
     urlProfilePic: string,
     urlProfilePicAltID: string,
     sessionToken: string,
     postID?: string,
+    username?: string,
     topicID?: string,
     singleFetchReturn?: any,
     fetchReturn?: any
@@ -22,7 +22,13 @@ type StateData={
 }
 
 type PropsType={
-    state: StateData
+    state: StateData,
+    updateToken: any
+  
+    // handleSubmitRegister: any,
+    // fetchSetUserData: (e:React.ChangeEvent<HTMLInputElement>) => void,
+    // changeHandlerUsername: (e:React.ChangeEvent<HTMLInputElement>) => void,
+    // changeHandlerPassword: (e:React.ChangeEvent<HTMLInputElement>) => void
 }
 
 type StateType={
@@ -36,8 +42,8 @@ class Auth extends Component <PropsType,StateType>{
     render(){
         return(
             <div>
-                <Login state={this.props.state}/>
-                <Register state={this.props.state}/>
+                <Login  updateToken={this.props.updateToken} state={this.props.state}/>
+                <Register    updateToken={this.props.updateToken} state={this.props.state}/>
             </div>
         )
     }

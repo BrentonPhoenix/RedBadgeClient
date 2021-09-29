@@ -1,19 +1,15 @@
 import './App.css';
 import Main from './components/main/Main'
-import Header from './components/header/Header';
-
+// import Header from './components/header/Header';
+// import Footer from './components/footer/Footer'
 
 function App()  {
-  // const clearToken = () => {
-  //   localStorage.clear();
-  // }
-
-
 
   return (
     <div className="App">
-      <Header/>
+      {/* <Header/> */}
       <Main/>
+      {/* <Footer/> */}
     </div>
   );
 }

@@ -1,12 +1,26 @@
 import { Component } from "react";
-// import PropsType from "../Props.State/PropsType";
-import StateType from "../Props.State/StateType";
-import {Link } from 'react-router-dom'
+import PropsType from "../Props.State/PropsType";
+// import StateType from "../Props.State/StateType";
+import {Link, Redirect } from 'react-router-dom'
 
-type PropsType = {
-  
+
+type StateType ={
+    login: boolean,
+    userUserID: string,
+    role: string,
+    isBanned: boolean,
+    urlProfilePic: string,
+    urlProfilePicAltID: string,
+    sessionToken?: string,
+    username?: string,
+    postID?: string,
+    topicID?: string,
+    singleFetchReturn?: any,
+    fetchReturn?: any
+    password?: string,
+    bio?: string,
+    passwordKEY?: string,
 }
-
 class Header extends Component <PropsType, StateType> {
 //contains 4 buttons that link to home, profile, create topic, and logout. ALSO ADD protected route to an empty mod options page! Need at least two types of users to meet the Definition of Done.
 constructor(props: PropsType){
@@ -20,13 +34,15 @@ constructor(props: PropsType){
         role: "",
         urlProfilePic: "",
         urlProfilePicAltID:"",
-        sessionToken: ""
+        // sessionToken: ""
     }
 
 }
+
 clearToken(){
     localStorage.clear();
     this.setState({sessionToken: ""})
+    window.location.reload()
   }
 
   
@@ -46,10 +62,8 @@ clearToken(){
                  {/* this is a button that is visible only to Admin. Takes to an empty page with Admin  */}
                  <Link to="/"><button>Home</button></Link>
                  <Link to="/profile"><button>Profile</button></Link>
-                 <Link to="/topic"><button>My Topics</button></Link>
-                 <button onClick={e => this.clearToken()}>Logout</button>  
-                 {/* need to add logout function   */}
-                 
+                 <Link to="/mytopics"><button>My Topics</button></Link>
+                <button onClick={e => this.clearToken()}>Logout</button>
             </div>
         )
     }
