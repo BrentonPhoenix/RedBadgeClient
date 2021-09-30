@@ -56,7 +56,13 @@ class MyTopics extends Component <PropsType, StateType> {
 
     
     componentDidMount(){
-        fetch('http://localhost:4500/topic/mine', {
+        this.fetchTopics()
+        //   .then(() =>  this.props.setTopicID() )
+        
+        }
+
+        fetchTopics = async () => {
+           await fetch('http://localhost:4500/topic/mine', {
                 method: 'GET',
                 headers: new Headers({ 
                     'Content-type': 'application/json',
@@ -64,12 +70,10 @@ class MyTopics extends Component <PropsType, StateType> {
                 })
           }).then(res => res.json())
           .then(json => this.setState({fetchReturn: json}))
-        //   .then(() =>  this.props.setTopicID() )
-        
-        }
+        } 
 
         componentDidUpdate(prevProps:any, prevState:any){
-
+            
         }
 
     postTopic(event:any){

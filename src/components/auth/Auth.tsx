@@ -24,7 +24,7 @@ type StateData={
 type PropsType={
     state: StateData,
     updateToken: any
-  
+    setLoginAndRole: any,
     // handleSubmitRegister: any,
     // fetchSetUserData: (e:React.ChangeEvent<HTMLInputElement>) => void,
     // changeHandlerUsername: (e:React.ChangeEvent<HTMLInputElement>) => void,
@@ -42,8 +42,8 @@ class Auth extends Component <PropsType,StateType>{
     render(){
         return(
             <div>
-                <Login  updateToken={this.props.updateToken} state={this.props.state}/>
-                <Register    updateToken={this.props.updateToken} state={this.props.state}/>
+                <Login setLoginAndRole={this.props.setLoginAndRole}  updateToken={this.props.updateToken} state={this.props.state}/>
+                <Register   setLoginAndRole={this.props.setLoginAndRole}  updateToken={this.props.updateToken} state={this.props.state}/>
             </div>
         )
     }

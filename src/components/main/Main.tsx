@@ -7,7 +7,7 @@ import Admin from "../admin/Admin";
 import Profile from '../bio/Profile'
 import MyTopics from "../topic/MyTopics";
 import Header from "../header/Header";
-
+import UserRoute from '../protected-routes.tsx/UserRoute'
 
 
 type PropsType = {
@@ -23,7 +23,7 @@ type StateType = {
     urlProfilePicAltID: string,
     sessionToken: string,
     username?: string,
-    postID?: string,
+    postID?: any,
     TopicID?: string,
     singleFetchReturn?: any,
     fetchReturn?: any
@@ -49,7 +49,7 @@ class Main extends Component <{}, StateType>{
             urlProfilePicAltID: "",
             sessionToken: "", 
             TopicID: " ",
-            postID: " "
+            postID: ""
             // fetchReturn: []
             //eventual theme state goes here
         }
@@ -75,11 +75,16 @@ class Main extends Component <{}, StateType>{
     this.setState({TopicID: topicID})}
   }
 
-  setPostID(e:any, postID: string){
-      e.preventDefault()
-      if(this.state.postID){
+  setPostID=(e:any, postID: any)=>{
+
+      if(true){
           this.setState({postID: postID})
       }
+  }
+  setLoginAndRole =( role: any)=>{
+      if(true){
+          this.setState({role: role})
+              }
   }
 
 
@@ -87,16 +92,18 @@ class Main extends Component <{}, StateType>{
     render(){
         return(
             <>
-            <Header sessionToken={this.state.sessionToken}/>
+            <Header role={this.state.role} sessionToken={this.state.sessionToken}/>
                 <Switch>
-                    <Route exact path='/' ><Home  userUserID={this.state.userUserID} updateToken={this.updateToken}state={this.state}/></Route>
+                    {/* <UserRoute role={this.state.role} sessionToken={this.state.sessionToken}/> */}
+                    <Route exact path='/' ><Home setLoginAndRole={this.setLoginAndRole}  userUserID={this.state.userUserID} updateToken={this.updateToken}state={this.state} role={this.state.role}/></Route>
                     {/* handleSubmitRegister={this.handleSubmitRegister} fetchSetUserData={this.fetchSetUserData} changeHandlerUsername={this.changeHandlerUsername} changeHandlerPassword={this.changeHandlerPassword} */}
-                    <Route exact path='/profile' ><Profile state={this.state}/></Route>
+                    <Route  exact path='/profile' ><Profile state={this.state}/></Route>
                     <Route exact path='/topic/' ><Topic TopicID={this.state.TopicID} setPostID={this.setPostID} state={this.state} sessionToken={this.state.sessionToken}/></Route>
                     <Route exact path='/mytopics' ><MyTopics 
                      setTopicID={this.setTopicID} sessionToken={this.state.sessionToken} state={this.state}/></Route>
-                    <Route exact path="/post" ><Post postID={this.state.postID} state={this.state}/></Route>
-                    <Route path="/admin" ><Admin state={this.state}/></Route>
+                    <Route exact path="/post" ><Post sessionToken={this.state.sessionToken} postID={this.state.postID} state={this.state}/></Route>
+                    <UserRoute sessionToken={this.state.sessionToken} />
+                    
                     <Route path="*" component={()=> <div>'404 page not found'</div>}/>
                 </Switch>
             </>

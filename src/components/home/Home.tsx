@@ -25,8 +25,11 @@ type StateData={
 
 type PropsType={
     state: StateData,
-    updateToken: any
-    userUserID: any
+    updateToken: any,
+    userUserID: any,
+    setLoginAndRole: any,
+    role: any
+
     // handleSubmitRegister: any,
     // fetchSetUserData: (e:React.ChangeEvent<HTMLInputElement>) => void,
     // changeHandlerUsername: (e:React.ChangeEvent<HTMLInputElement>) => void,
@@ -83,8 +86,9 @@ class Home extends Component <PropsType, StateType> {
         return(
             <div className="main">
                 
-                <Auth  updateToken={this.props.updateToken}  state={this.props.state} />
-                {/* handleSubmitRegister={this.props.handleSubmitRegister} fetchSetUserData={this.props.fetchSetUserData} changeHandlerUsername={this.props.changeHandlerUsername} changeHandlerPassword={this.props.changeHandlerPassword} */}
+                <Auth setLoginAndRole={this.props.setLoginAndRole}  updateToken={this.props.updateToken}  state={this.props.state} />
+                <br/>
+                <button onClick={()=> console.log(this.props.role)}>Console.log(role)</button>
                 {
                     this.state.fetchReturn.map((current:any, index:any)=> {
                         return(
@@ -96,6 +100,7 @@ class Home extends Component <PropsType, StateType> {
                         )
                     })
                 }
+
                 {/* <DisplayFetch fetch={this.state.fetchReturn}/> */}
             </div>
         )

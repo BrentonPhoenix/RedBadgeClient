@@ -25,6 +25,7 @@ type StateData={
 type PropsType={
     state: StateData,
     updateToken: any
+    setLoginAndRole: any
 }
 
 type StateType={
@@ -71,9 +72,25 @@ constructor(props: PropsType){
         .then( data => {
             this.props.updateToken(data.sessionToken)
             console.log(data)
-        })
+        this.fetchSetUserData()})
         .catch((err:any)=> console.log(err))
     }
+
+
+    fetchSetUserData(){
+        fetch('http://localhost:4500/users/',{
+                method: 'GET',
+                headers: new Headers({ 
+                    'Content-type': 'application/json',
+                    'Authorization': `Bearer ${this.props.state.sessionToken}`
+                })
+          }).then(res => res.json())
+        //   .then(json=> console.log(json))
+          .then(json => this.props.setLoginAndRole(json[1]))
+            // ({login: true,role: json[1]}))
+        //   .then(e=>console.log('this.state.role ',this.state))
+      }
+
 
     changeHandlerUsername(event:any){
         this.setState({username: event.target.value})

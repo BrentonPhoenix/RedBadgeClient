@@ -230,7 +230,7 @@ class Topic extends Component <PropsType, StateType>{
                 this.state.fetchReturn !== ['this']?
                         this.state.fetchReturn.map((current:any, index:any)=> {
                             return(
-                                <div key={index} onClick={(e)=> this.props.setPostID(e,current.postPostID)} >
+                                <div key={index} onClick={(e)=> this.props.setPostID(e,current.postID)} >
                                     <Link to='/post'>
                                     {/* onClick={e=> this.props.setTopicID(e,current.TopicID)}  */}
                                     {/* TopicID={current.TopicID} */}
@@ -239,6 +239,7 @@ class Topic extends Component <PropsType, StateType>{
                                 <div>{current.postTitle}</div>
                                 <div>{current.postKeywords}</div>
                                 <div>{current.postContent}</div>
+                                <div>{current.postID}</div>
                             </div>
                            </Link>
                             {console.log(current)}
@@ -250,6 +251,7 @@ class Topic extends Component <PropsType, StateType>{
                 </div>
                 <button onClick={e=> console.log(this.props.TopicID)}>console.log TopicID</button>
                 <button onClick={e=> console.log(this.props.state.sessionToken)}>console.log sessionToken</button>
+           
             </div>
         )
     }

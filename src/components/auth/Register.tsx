@@ -23,7 +23,7 @@ type StateData={
 type PropsType={
     state: StateData,
    updateToken: any,
-
+    setLoginAndRole:any,
     // fetchSetUserData: (event:React.ChangeEvent<HTMLInputElement>) => void,
     // changeHandlerUsername: (event:React.ChangeEvent<HTMLInputElement>) => void,
     // changeHandlerPassword: (event:React.ChangeEvent<HTMLInputElement>) => void
@@ -74,7 +74,9 @@ class Register extends Component<PropsType, StateType> {
                     'Authorization': `Bearer ${this.props.state.sessionToken}`
                 })
           }).then(res => res.json())
-        //   .then(json => this.setState({login: true,role: json[1]}))
+        //   .then(json=> console.log(json))
+          .then(json => this.props.setLoginAndRole(json[1]))
+            // ({login: true,role: json[1]}))
         //   .then(e=>console.log('this.state.role ',this.state))
       }
 

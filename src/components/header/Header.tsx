@@ -21,6 +21,7 @@ type StateType ={
     bio?: string,
     passwordKEY?: string,
 }
+
 class Header extends Component <PropsType, StateType> {
 //contains 4 buttons that link to home, profile, create topic, and logout. ALSO ADD protected route to an empty mod options page! Need at least two types of users to meet the Definition of Done.
 constructor(props: PropsType){
@@ -48,22 +49,19 @@ clearToken(){
   
     render(){
         return(
-            <div>
-                <h2>This is the header component</h2>
-                {/* 
-                Five BUTTONS
-                Admin button-which only shows up for people who have the Admin role
-                home
-                profile
-                create topic
-                logout
-                 */}
-                 <Link to="/admin"><button>Admin</button></Link> 
-                 {/* this is a button that is visible only to Admin. Takes to an empty page with Admin  */}
+            <div className="mainHeader">
+                <h1>This is the header component</h1>
+                 <Link to="/admin"><button>Admin</button></Link>
+            {/* {this.props.role ? */}
+                <div> 
+                
                  <Link to="/"><button>Home</button></Link>
                  <Link to="/profile"><button>Profile</button></Link>
                  <Link to="/mytopics"><button>My Topics</button></Link>
-                <button onClick={e => this.clearToken()}>Logout</button>
+                 <button onClick={e => this.clearToken()}>Logout</button>
+              
+                </div>
+            {/* : null} */}
             </div>
         )
     }
