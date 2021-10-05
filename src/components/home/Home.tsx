@@ -1,11 +1,32 @@
-import React, {Component} from "react";
+import { Component } from "react";
 import Auth from "../auth/Auth"
-// import Header from "../header/Header";
-// import PropsType from "../Props.State/PropsType";
 import StateType from "../Props.State/StateType";
-// import DisplayFetch from "./DisplayFetch";
+import Box, { BoxProps } from '@mui/material/Box'
+import APIURL from '../../helpers/environment'
 
-type StateData={
+
+
+
+function Item(props: BoxProps) {
+    const { sx, ...other } = props;
+    return (
+        <Box
+            sx={{
+                bgcolor: "#DCE4CA",
+                color: "black",
+                p: 1,
+                // borderRadius: 1,
+              
+                fontSize: 19,
+                fontWeight: "700",
+                ...sx
+            }}
+            {...other}
+        />
+    );
+}
+
+type StateData = {
     login: boolean,
     userUserID: string,
     role: string,
@@ -23,57 +44,48 @@ type StateData={
     passwordKEY?: string,
 }
 
-type PropsType={
+type PropsType = {
     state: StateData,
     updateToken: any,
     userUserID: any,
     setLoginAndRole: any,
-    role: any
-
-    // handleSubmitRegister: any,
-    // fetchSetUserData: (e:React.ChangeEvent<HTMLInputElement>) => void,
-    // changeHandlerUsername: (e:React.ChangeEvent<HTMLInputElement>) => void,
-    // changeHandlerPassword: (e:React.ChangeEvent<HTMLInputElement>) => void
+    role: any,
 }
 
-// type StateType={
-//     state: any
-// }
-
-class Home extends Component <PropsType, StateType> {
-    constructor(props:PropsType){
+class Home extends Component<PropsType, StateType> {
+    constructor(props: PropsType) {
         super(props)
-        this.state ={
-           login: false,
-           userUserID: "",
-           role: "",
-           isBanned: false,
-           urlProfilePicAltID: "",
-           urlProfilePic: "",
-           sessionToken: "",
-           fetchReturn: []
+        this.state = {
+            login: false,
+            userUserID: "",
+            role: "",
+            isBanned: false,
+            urlProfilePicAltID: "",
+            urlProfilePic: "",
+            sessionToken: "",
+            fetchReturn: []
         }
-    //     // this.communityLockedTopics = this.communityLockedTopics.bind(this)
+        //     // this.communityLockedTopics = this.communityLockedTopics.bind(this)
     }
 
 
 
 
-    componentDidMount(){
-        fetch('http://localhost:4500/topic/public', {
-                method: 'GET',
-                headers: new Headers({ 
-                    'Content-type': 'application/json',
-                    // 'Authorization': `Bearer ${this.props.state.sessionToken}`
-                })
-          }).then(res => res.json())
-          .then(json => this.setState({fetchReturn: json}))
-          .then(() => console.log(this.state.fetchReturn))
-        }
-        // componentDidUpdate(){
-        //     console.log(this.state.fetchReturn)
-        // }
-//fetch all topics where communityLocked = false on render
+    componentDidMount() {
+        fetch(`${APIURL}/topic/public`, {
+            method: 'GET',
+            headers: new Headers({
+                'Content-type': 'application/json',
+                // 'Authorization': `Bearer ${this.props.state.sessionToken}`
+            })
+        }).then(res => res.json())
+            .then(json => this.setState({ fetchReturn: json }))
+            .then(() => console.log(this.state.fetchReturn))
+    }
+    // componentDidUpdate(){
+    //     console.log(this.state.fetchReturn)
+    // }
+    //fetch all topics where communityLocked = false on render
 
 
 
@@ -82,26 +94,52 @@ class Home extends Component <PropsType, StateType> {
 
 
 
-    render(){
-        return(
+    render() {
+        return (
             <div className="main">
-                
-                <Auth setLoginAndRole={this.props.setLoginAndRole}  updateToken={this.props.updateToken}  state={this.props.state} />
-                <br/>
-                <button onClick={()=> console.log(this.props.role)}>Console.log(role)</button>
                 {
-                    this.state.fetchReturn.map((current:any, index:any)=> {
-                        return(
-                            <div key={index}>
-                              <div>{current.url === ""? null: <img src={current.url} alt={current.urlImageID}/>}</div> 
-                                <div>{current.TopicTitle}</div>
-                                <div>{current.Keywords}</div>
-                            </div>
-                        )
-                    })
-                }
+                    this.props.state.sessionToken
+                    ?
+                    <div>
+                    <h1>You are Logged In!</h1>
+                    <h4>At some point this will hold:</h4>
+                    <ul>
+                        <li>A link to My Profile</li>
+                        <li>A link to My topics</li>
+                        <li>A fetch will all topics that exist</li>
+                    </ul>
+                    </div>
+                    :
+                <Box
+                    sx={{
+                        display: 'grid',
+                        gridAutoColumns: '1fr',
+                        gridAutoRows: '45px',
+                        gap: 1,
 
-                {/* <DisplayFetch fetch={this.state.fetchReturn}/> */}
+
+                    }}>
+                    <Item sx={{gridRow: 'span 6', gridColumn: "span 12"}}>
+                        <Auth setLoginAndRole={this.props.setLoginAndRole} updateToken={this.props.updateToken} state={this.props.state} />
+                    </Item>
+                    <Item sx={{gridRow: 'span  10', gridColumn: "span 12"}}>
+                    {
+                        this.state.fetchReturn.map((current: any, index: any) => {
+                            return (
+                                <div key={index}>
+                                    <Box sx={{gridRow: 'span 1', gridColumn: 'span 12'}}>
+                                    <Item >{current.url === "" ? null : <img src={current.url} alt={current.urlImageID} height='auto' width='75px' />}</Item>
+                                    <Item>{current.TopicTitle}</Item>
+                                    <Item>{current.Keywords}</Item>
+                                    </Box>
+                                </div>
+                            )
+                        })
+                    }
+                    </Item>
+
+                </Box>
+    }
             </div>
         )
     }

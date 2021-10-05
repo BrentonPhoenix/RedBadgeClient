@@ -1,6 +1,5 @@
 import { Component } from "react";
-// import PropsType from "../Props.State/PropsType";
-// import StateType from "../Props.State/StateType";
+import APIURL from '../../helpers/environment'
 
 type StateData={
     login: boolean,
@@ -52,7 +51,7 @@ class Register extends Component<PropsType, StateType> {
 
     handleSubmitRegister(event: any) {
         event.preventDefault()
-        fetch('http://localhost:4500/users/register', {
+        fetch(`${APIURL}/users/register`, {
             method: 'POST',
             body: JSON.stringify({username: this.state.username ,password: this.state.password}), 
             headers: new Headers({
@@ -61,17 +60,17 @@ class Register extends Component<PropsType, StateType> {
         })
         .then(response =>response.json())
         .then( data =>{this.props.updateToken(data.sessionToken); 
-            this.fetchSetUserData()} )
+            this.fetchSetUserData(data.sessionToken)} )
      
         .catch((err:any)=> console.log(err))
     }
     
-    fetchSetUserData(){
-        fetch('http://localhost:4500/users/',{
+    fetchSetUserData(sessionToken:string){
+        fetch(`${APIURL}/users/`,{
                 method: 'GET',
                 headers: new Headers({ 
                     'Content-type': 'application/json',
-                    'Authorization': `Bearer ${this.props.state.sessionToken}`
+                    'Authorization': `Bearer ${sessionToken}`
                 })
           }).then(res => res.json())
         //   .then(json=> console.log(json))
@@ -107,7 +106,7 @@ class Register extends Component<PropsType, StateType> {
     render(){
         return(
             <div>
-                <h1>This is the register component</h1>
+                <h1>Register</h1>
                 <form onSubmit={this.handleSubmitRegister}>
                 <label htmlFor="username">Username</label>
                 <br/>
@@ -119,9 +118,6 @@ class Register extends Component<PropsType, StateType> {
                 <br/>
                 <button type="submit">Register</button>
                 </form>
-                {/* {console.log(this.state)} this has the odd effect of printing the password to the console. Which makes sense since it's reading the value of this.state.password along with everything else. They ARE getting properly hashed*/}
-                <button onClick={()=> console.log(this.props.state.sessionToken)}>Console.log(sessionToken)</button>
-               
             </div>
         )
     }

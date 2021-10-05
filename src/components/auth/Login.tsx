@@ -1,6 +1,5 @@
 import { Component } from "react";
-// import PropsType from "../Props.State/PropsType";
-// import StateType from "../Props.State/StateType";
+import APIURL from '../../helpers/environment'
 
 
 
@@ -61,7 +60,7 @@ constructor(props: PropsType){
 
     handleSubmit(event: any) {
         event.preventDefault()
-        fetch('http://localhost:4500/users/login', {
+        fetch(`${APIURL}/users/login`, {
             method: 'POST',
             body: JSON.stringify({username: this.state.username ,password: this.state.password}), 
             headers: new Headers({
@@ -71,18 +70,18 @@ constructor(props: PropsType){
         .then(response => response.json())
         .then( data => {
             this.props.updateToken(data.sessionToken)
-            console.log(data)
-        this.fetchSetUserData()})
+            // console.log(data)
+        this.fetchSetUserData(data.sessionToken)})
         .catch((err:any)=> console.log(err))
     }
 
 
-    fetchSetUserData(){
-        fetch('http://localhost:4500/users/',{
+    fetchSetUserData(sessionToken: string){
+        fetch(`${APIURL}http://localhost:4500/users/`,{
                 method: 'GET',
                 headers: new Headers({ 
                     'Content-type': 'application/json',
-                    'Authorization': `Bearer ${this.props.state.sessionToken}`
+                    'Authorization': `Bearer ${sessionToken}`
                 })
           }).then(res => res.json())
         //   .then(json=> console.log(json))
@@ -108,7 +107,7 @@ constructor(props: PropsType){
     render(){
         return(
             <div>
-                <h1>This is the Login component</h1>
+                <h1>Login</h1>
                 <form onSubmit={this.handleSubmit}>
                 <label htmlFor="username">Username</label>
                 <br/>

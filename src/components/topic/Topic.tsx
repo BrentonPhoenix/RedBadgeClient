@@ -1,5 +1,6 @@
 import { Component } from "react";
 import { Link } from "react-router-dom";
+import APIURL from '../../helpers/environment'
 
 type StateData={
     login: boolean,
@@ -61,7 +62,7 @@ class Topic extends Component <PropsType, StateType>{
 
     
     componentDidMount(){
-        fetch(`http://localhost:4500/topic/${this.props.TopicID}`, {
+        fetch(`${APIURL}/topic/${this.props.TopicID}`, {
                 method: 'GET',
                 headers: new Headers({ 
                     'Content-type': 'application/json',
@@ -71,7 +72,7 @@ class Topic extends Component <PropsType, StateType>{
           .then(json => this.setState({singleFetchReturn: json}))
           .then(() => console.log(this.state.singleFetchReturn))
 
-          fetch(`http://localhost:4500/posts/${this.props.TopicID}`, {
+          fetch(`${APIURL}/posts/${this.props.TopicID}`, {
                 method: 'GET',
                 headers: new Headers({ 
                     'Content-type': 'application/json',
@@ -86,7 +87,7 @@ class Topic extends Component <PropsType, StateType>{
 
         deleteTopic(event: any){
             event.preventDefault()
-            fetch(`http://localhost:4500/topic/delete/${this.props.TopicID}`, {
+            fetch(`${APIURL}/topic/delete/${this.props.TopicID}`, {
                 method: 'DELETE',
                 headers: new Headers({ 
                     'Content-type': 'application/json',
@@ -100,7 +101,7 @@ class Topic extends Component <PropsType, StateType>{
 
         updateTopic(event: any){
             event.preventDefault()
-            fetch(`http://localhost:4500/topic/update/${this.props.TopicID}`, {
+            fetch(`${APIURL}/topic/update/${this.props.TopicID}`, {
                 method: 'PUT',
                 body: JSON.stringify({TopicTitle: this.state.TopicTitle ,url: this.state.TopicURL, Keywords: this.state.TopicKeywords}),
                 headers: new Headers({ 
@@ -114,7 +115,7 @@ class Topic extends Component <PropsType, StateType>{
 
 
 
-          fetch(`http://localhost:4500/topic/${this.props.TopicID}`, {
+          fetch(`${APIURL}/topic/${this.props.TopicID}`, {
                 method: 'GET',
                 headers: new Headers({ 
                     'Content-type': 'application/json',
@@ -128,7 +129,7 @@ class Topic extends Component <PropsType, StateType>{
 
         createPost(event: any){
             event.preventDefault()
-            fetch(`http://localhost:4500/posts/create`, {
+            fetch(`${APIURL}/posts/create`, {
                 method: 'POST',
                 body: JSON.stringify({url: this.state.url, postTitle: this.state.title, postKeywords: this.state.Keywords, postContent: this.state.content, topicID: this.props.TopicID}),
                 headers: new Headers({ 
@@ -235,7 +236,7 @@ class Topic extends Component <PropsType, StateType>{
                                     {/* onClick={e=> this.props.setTopicID(e,current.TopicID)}  */}
                                     {/* TopicID={current.TopicID} */}
                                     <div >
-                              <div>{current.url === ""? null: <img src={current.url} alt={current.urlAltID}/>}</div> 
+                              <div>{current.url === ""? null: <img src={current.url} alt={current.urlAltID} height='auto' width='75px'/>}</div> 
                                 <div>{current.postTitle}</div>
                                 <div>{current.postKeywords}</div>
                                 <div>{current.postContent}</div>

@@ -1,7 +1,7 @@
 import { Component } from "react";
 import Login from "./Login";
 import Register from "./Register";
-
+import { Grid } from "@mui/material";
 
 type StateData={
     login: boolean,
@@ -42,8 +42,14 @@ class Auth extends Component <PropsType,StateType>{
     render(){
         return(
             <div>
-                <Login setLoginAndRole={this.props.setLoginAndRole}  updateToken={this.props.updateToken} state={this.props.state}/>
+                <Grid container justifyContent='space-evenly' >
+                    <Grid item xs={6} border='5px solid black' padding="0px 0px 50px 0px" >
+                <Login  setLoginAndRole={this.props.setLoginAndRole}  updateToken={this.props.updateToken} state={this.props.state}/>
+                </Grid>
+                <Grid item xs={6} border='5px solid black' padding="0px 0px 50px 0px">
                 <Register   setLoginAndRole={this.props.setLoginAndRole}  updateToken={this.props.updateToken} state={this.props.state}/>
+                </Grid>
+                </Grid>
             </div>
         )
     }
