@@ -77,7 +77,7 @@ constructor(props: PropsType){
 
 
     fetchSetUserData(sessionToken: string){
-        fetch(`${APIURL}http://localhost:4500/users/`,{
+        fetch(`${APIURL}/users/`,{
                 method: 'GET',
                 headers: new Headers({ 
                     'Content-type': 'application/json',
