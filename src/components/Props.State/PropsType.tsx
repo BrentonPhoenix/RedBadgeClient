@@ -1,7 +1,8 @@
 import StateType from "./StateType"
 
 type PropsType = {
-    // props: StateType
+    sessionToken: string,
+    role: string
 }
 
 export default PropsType

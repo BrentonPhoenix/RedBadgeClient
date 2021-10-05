@@ -1,51 +1,81 @@
 import { Component } from "react";
 import PropsType from "../Props.State/PropsType";
-import StateType from "../Props.State/StateType";
-import {Link } from 'react-router-dom'
+// import StateType from "../Props.State/StateType";
+import { Link, Redirect } from 'react-router-dom'
+// import  Box , {BoxProps} from '@mui/material/Box'
+import { Grid } from "@mui/material";
 
-class Header extends Component <PropsType, StateType> {
-//contains 4 buttons that link to home, profile, create topic, and logout. ALSO ADD protected route to an empty mod options page! Need at least two types of users to meet the Definition of Done.
-constructor(props: PropsType){
-    super(props)
-    this.state ={
-        login: false,
-        username: "",
-        userUserID: "",
-        password: '',
-        isBanned: false,
-        role: "",
-        urlProfilePic: "",
-        urlProfilePicAltID:"",
-        sessionToken: ""
+
+
+
+
+type StateType = {
+    login: boolean,
+    userUserID: string,
+    role: string,
+    isBanned: boolean,
+    urlProfilePic: string,
+    urlProfilePicAltID: string,
+    sessionToken?: string,
+    username?: string,
+    postID?: string,
+    topicID?: string,
+    singleFetchReturn?: any,
+    fetchReturn?: any
+    password?: string,
+    bio?: string,
+    passwordKEY?: string,
+}
+
+class Header extends Component<PropsType, StateType> {
+    constructor(props: PropsType) {
+        super(props)
+        this.state = {
+            login: false,
+            username: "",
+            userUserID: "",
+            password: '',
+            isBanned: false,
+            role: "",
+            urlProfilePic: "",
+            urlProfilePicAltID: "",
+            // sessionToken: ""
+        }
+
     }
 
-}
-clearToken(){
-    localStorage.clear();
-    this.setState({sessionToken: ""})
-  }
+    clearToken() {
+        localStorage.clear();
+        this.setState({ sessionToken: "" })
+        window.location.reload()
+    }
 
-  
-    render(){
-        return(
-            <div>
-                <h2>This is the header component</h2>
-                {/* 
-                Five BUTTONS
-                Admin button-which only shows up for people who have the Admin role
-                home
-                profile
-                create topic
-                logout
-                 */}
-                 <Link to="/admin"><button>Admin</button></Link> 
-                 {/* this is a button that is visible only to Admin. Takes to an empty page with Admin  */}
-                 <Link to="/"><button>Home</button></Link>
-                 <Link to="/profile"><button>Profile</button></Link>
-                 <Link to="/topic"><button>My Topics</button></Link>
-                 <button onClick={e => this.clearToken()}>Logout</button>  
-                 {/* need to add logout function   */}
-                 
+
+    render() {
+        return (
+            <div style={{width: '100%'}}>
+               
+                <Grid container xs={12} bgcolor="#41733A" justifyContent="flex-end">
+                    <Grid item xs={1}  >
+                {
+                    this.props.role === "Admin" ? <Link to="/admin"><button>Admin</button></Link> : null
+
+                }
+                    </Grid>
+
+                <Grid item xs={1} >
+                    <Link to="/"><button>Home</button></Link>
+                    </Grid>
+                <Grid xs={1} >
+                    <Link to="/profile"><button>Profile</button></Link>
+                    </Grid>
+                <Grid item  xs={1}>
+                    <Link to="/mytopics"><button>Topics</button></Link>
+                    </Grid>
+                <Grid item xs={1}>
+                    <button onClick={e => this.clearToken()}>Logout</button>
+                    </Grid>
+                </Grid>  
             </div>
         )
     }
