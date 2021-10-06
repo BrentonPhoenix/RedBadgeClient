@@ -233,8 +233,6 @@ class Topic extends Component <PropsType, StateType>{
                             return(
                                 <div key={index} onClick={(e)=> this.props.setPostID(e,current.postID)} >
                                     <Link to='/post'>
-                                    {/* onClick={e=> this.props.setTopicID(e,current.TopicID)}  */}
-                                    {/* TopicID={current.TopicID} */}
                                     <div >
                               <div>{current.url === ""? null: <img src={current.url} alt={current.urlAltID} height='auto' width='75px'/>}</div> 
                                 <div>{current.postTitle}</div>

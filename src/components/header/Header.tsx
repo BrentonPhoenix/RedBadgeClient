@@ -1,8 +1,6 @@
 import { Component } from "react";
 import PropsType from "../Props.State/PropsType";
-// import StateType from "../Props.State/StateType";
-import { Link, Redirect } from 'react-router-dom'
-// import  Box , {BoxProps} from '@mui/material/Box'
+import { Link } from 'react-router-dom'
 import { Grid } from "@mui/material";
 
 
@@ -39,7 +37,7 @@ class Header extends Component<PropsType, StateType> {
             role: "",
             urlProfilePic: "",
             urlProfilePicAltID: "",
-            // sessionToken: ""
+
         }
 
     }

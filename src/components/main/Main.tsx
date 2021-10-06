@@ -101,7 +101,7 @@ class Main extends Component<BoxProps, StateType>{
     }
 
     setPostID = (e: any, postID: any) => {
-
+        e.preventDefault()
         if (true) {
             this.setState({ postID: postID })
         }
@@ -123,6 +123,7 @@ class Main extends Component<BoxProps, StateType>{
                     gridAutoColumns: '1fr',
                     gridAutoRows: '50px',
                     gap: 1,
+                    // position: "absolute"
                    
 
                 }}>
