@@ -1,7 +1,7 @@
 import { Component } from "react";
 import { Link } from "react-router-dom";
 import APIURL from '../../helpers/environment'
-import {Button } from "@mui/material"
+
 
 type StateData={
     login: boolean,
@@ -14,8 +14,6 @@ type StateData={
     sessionToken: string,
     postID?: string,
     topicID?: string,
-    // singleFetchReturn?: any,
-    // fetchReturn?: any
     password?: string,
     bio?: string,
     passwordKEY?: string,
@@ -199,12 +197,12 @@ class Topic extends Component <PropsType, StateType>{
                     <input value={this.state.TopicKeywords} onChange={(e)=> this.changeHandlerTopicKeywords(e)} type="text" placeholder="keywords" />
                     <br/>
                     <br/>
-                    <Button type="button" size="medium" variant="contained" color="info">update</Button>
+                    <button type="submit">Update</button>
                     </form>
                   
                 </div>
                     <br/>
-                    <Button type="button" size="medium" variant="contained" color="warning" onClick={this.deleteTopic}>delete</Button>
+                    <button type="button"  onClick={this.deleteTopic}>Delete</button>
                 </div>
                 <br/>
                 <br/>
@@ -225,7 +223,7 @@ class Topic extends Component <PropsType, StateType>{
                     <input value={this.state.content} onChange={(e)=> this.changeHandlerContent(e)} type="text" placeholder="content" />
                     <br/>
                     <br/>
-                    <Button type="submit" size="medium" variant="contained" color="info">Create Post</Button>
+                    <button type="submit">Create Post</button>
                     </form>
                 </div>
                 <div>

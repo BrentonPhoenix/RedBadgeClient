@@ -1,13 +1,12 @@
 import APIURL from '../../helpers/environment'
 import { Component } from "react";
 import { Link } from "react-router-dom";
-import { Button } from "@mui/material"
+
 
 
 type StateData = {
     login: boolean,
     userUserID: string,
-    // username: string,
     role: string,
     isBanned: boolean,
     urlProfilePic: string,
@@ -123,7 +122,7 @@ class MyTopics extends Component<PropsType, StateType> {
                         <input value={this.state.Keywords} onChange={(e) => this.changeHandlerKeywords(e)} type="text" placeholder="keywords" />
                         <br />
                         <br />
-                        <Button type="submit" size="medium" variant="contained" color="info">Create Topic</Button>
+                        <button type="submit">Create Topic</button>
                     </form>
                 </div>
                 <br />

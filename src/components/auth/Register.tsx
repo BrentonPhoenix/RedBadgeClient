@@ -91,7 +91,7 @@ class Register extends Component<PropsType, StateType> {
                 <input type="password" value={this.state.password} onChange={(event) => this.changeHandlerPassword(event)}/>
                 <br/>
                 <br/>
-                <Button type="submit" size="medium" variant="contained" color="success">Register</Button>
+                <button type="submit">Register</button>
                 </form>
             </div>
         )
