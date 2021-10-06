@@ -1,10 +1,10 @@
 import APIURL from '../../helpers/environment'
 import { Component } from "react";
+import {Button} from '@mui/material'
 
 type StateData = {
     login: boolean,
     userUserID: string,
-    // username: string,
     role: string,
     isBanned: boolean,
     urlProfilePic: string,
@@ -14,9 +14,7 @@ type StateData = {
     topicID?: string,
     singleFetchReturn?: any,
     fetchReturn?: any
-    password?: string,
-    bio?: string,
-    passwordKEY?: string,
+
 }
 
 type PropsType = {
@@ -43,13 +41,10 @@ class Post extends Component<PropsType, StateType>{
             title: "",
             content: ""
         }
-        // this.testPostFetch = this.testPostFetch.bind(this)
     }
 
 
     componentDidMount() {
-        // this.singlePostFetch()
-        console.log(this.props.postID)
         fetch(`${APIURL}/posts/${this.props.state.postID}`, {
             method: 'GET',
             headers: new Headers({
@@ -63,17 +58,7 @@ class Post extends Component<PropsType, StateType>{
             .catch(err => console.log('There is an error in the get one post the error is: ', err))
     }
 
-
-    randomFucntion() {
-        console.log('we are gteting props elsewhere why not')
-        console.log(this.props.postID)
-    }
-
     deletePost = () => {
-        // console.log(this.props.postID)
-        // this.props.postID ? console.log('we got an id') : console.log('what the heck');
-
-
         let postIDVariable = this.props.postID
         fetch(`${APIURL}/posts/delete/${postIDVariable}`, {
             method: 'DELETE',
@@ -119,47 +104,19 @@ class Post extends Component<PropsType, StateType>{
         this.setState({ content: event.target.value })
     }
 
-
-
-    // testPostFetch(){
-    //     fetch(`http://localhost:4500/posts/${this.props.postID}`, {
-    //         method: 'GET',
-    //         headers: new Headers({ 
-    //             'Content-type': 'application/json',
-    //             'Authorization': `Bearer ${this.props.sessionToken}`
-    //         })
-    //   }).then(res => res.json())
-    //   .then(json => this.setState({singleFetchReturn: json}))
-    //   .then(() => console.log(this.state.singleFetchReturn))
-    //   .catch(err => console.log('There is an error in the get one post the error is: ' ,err))
-    // }
-
-
-
     render() {
         return (
             <div>
-                <h2>THis is the Post component</h2>Props PostID:
+                <h2>This is the Post component</h2>Props PostID:
                 {this.props.state.postID}
                 <div>
-
-                    <br />
-              
                     {/* {this.state.singleFetchReturn.postID} */}
-                
-                    <br/>
-
-                    {/* {this.state.singleFetchReturn.postTitle} */}
-                    <br/>
-                    {/* {this.state.singleFetchReturn.postContent} */}
-                    <br/>
+                    {/* {this.state.singleFetchReturn} */}
+                    {/* {this.state.singleFetchReturn[0].postContent} */}
                     {/* {this.state.singleFetchReturn.postKeywords} */}
-                    <br/>
-                    {this.props.sessionToken}
                     {/* Content goes here */}
-                    <br />
-                    {/* <button onClick={this.updatePost}>update</button> */}
-                    <button onClick={this.deletePost}>delete</button>
+                    <br/>
+                    <button onClick={this.deletePost} type="submit">Delete</button>
                 </div>
                 {/* <button onClick={this.testPostFetch}>Fetch</button> */}
                 <br />
@@ -177,8 +134,10 @@ class Post extends Component<PropsType, StateType>{
                     <label htmlFor="content" />
                     <input value={this.state.content} onChange={(e) => this.changeHandlerContent(e)} type="text" placeholder="content" />
                     <br />
-                    <button type='submit'>updatePost</button>
+                    <br />
+                    <button type="submit">Update Post</button>
                 </form>
+                <br/>
                 <button onClick={e => console.log(this.props.state.postID)}>console.log postID</button>
                 <button onClick={e => console.log(this.state.singleFetchReturn)}>console.log fetch return</button>
             </div>

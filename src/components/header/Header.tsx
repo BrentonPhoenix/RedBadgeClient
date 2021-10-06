@@ -1,10 +1,7 @@
 import { Component } from "react";
 import PropsType from "../Props.State/PropsType";
-// import StateType from "../Props.State/StateType";
-import { Link, Redirect } from 'react-router-dom'
-// import  Box , {BoxProps} from '@mui/material/Box'
-import { Grid } from "@mui/material";
-
+import { Link } from 'react-router-dom'
+import { Grid } from "@mui/material"
 
 
 
@@ -39,7 +36,7 @@ class Header extends Component<PropsType, StateType> {
             role: "",
             urlProfilePic: "",
             urlProfilePicAltID: "",
-            // sessionToken: ""
+
         }
 
     }
@@ -56,23 +53,23 @@ class Header extends Component<PropsType, StateType> {
             <div style={{width: '100%'}}>
                
                 <Grid container xs={12} bgcolor="#41733A" justifyContent="flex-end">
-                    <Grid item xs={1}  >
+                    <Grid item sm={1} xs={2}  >
                 {
                     this.props.role === "Admin" ? <Link to="/admin"><button>Admin</button></Link> : null
 
                 }
                     </Grid>
 
-                <Grid item xs={1} >
+                <Grid item sm={1} xs={2} >
                     <Link to="/"><button>Home</button></Link>
                     </Grid>
-                <Grid xs={1} >
+                <Grid item sm={1} xs={2} >
                     <Link to="/profile"><button>Profile</button></Link>
                     </Grid>
-                <Grid item  xs={1}>
-                    <Link to="/mytopics"><button>Topics</button></Link>
+                <Grid item  sm={1} xs={2} >
+                    <Link to="/mytopics"><button >Topics</button></Link>
                     </Grid>
-                <Grid item xs={1}>
+                <Grid item sm={1} xs={2} >
                     <button onClick={e => this.clearToken()}>Logout</button>
                     </Grid>
                 </Grid>  

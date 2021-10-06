@@ -103,6 +103,7 @@ class Home extends Component<PropsType, StateType> {
                     <div>
                     <h1>You are Logged In!</h1>
                     <h4>At some point this will hold:</h4>
+                    {/* Auth Home goes here */}
                     <ul>
                         <li>A link to My Profile</li>
                         <li>A link to My topics</li>

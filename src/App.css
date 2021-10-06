@@ -2,3 +2,10 @@
 body{
   background-color: #B0B0B0 ;
 }
+
+button{
+  width: auto;
+  height: auto;
+  font-size: 20px;
+  font-weight: bold;
+}

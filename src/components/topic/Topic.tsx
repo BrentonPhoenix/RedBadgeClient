@@ -2,6 +2,7 @@ import { Component } from "react";
 import { Link } from "react-router-dom";
 import APIURL from '../../helpers/environment'
 
+
 type StateData={
     login: boolean,
     userUserID: string,
@@ -13,8 +14,6 @@ type StateData={
     sessionToken: string,
     postID?: string,
     topicID?: string,
-    // singleFetchReturn?: any,
-    // fetchReturn?: any
     password?: string,
     bio?: string,
     passwordKEY?: string,
@@ -197,13 +196,13 @@ class Topic extends Component <PropsType, StateType>{
                     <label htmlFor="keywords"/>
                     <input value={this.state.TopicKeywords} onChange={(e)=> this.changeHandlerTopicKeywords(e)} type="text" placeholder="keywords" />
                     <br/>
-                    {/* <button type='submit'>Create Topic</button> */}
-                    <button type='submit'>update</button>
+                    <br/>
+                    <button type="submit">Update</button>
                     </form>
-                    {/* <button onClick={()=> console.log(this.props.state.sessionToken)}>Console.log</button> */}
+                  
                 </div>
                     <br/>
-                    <button onClick={this.deleteTopic}>delete</button>
+                    <button type="button"  onClick={this.deleteTopic}>Delete</button>
                 </div>
                 <br/>
                 <br/>
@@ -223,7 +222,8 @@ class Topic extends Component <PropsType, StateType>{
                     <label htmlFor="content"/>
                     <input value={this.state.content} onChange={(e)=> this.changeHandlerContent(e)} type="text" placeholder="content" />
                     <br/>
-                    <button type='submit'>Create Post</button>
+                    <br/>
+                    <button type="submit">Create Post</button>
                     </form>
                 </div>
                 <div>
@@ -233,8 +233,6 @@ class Topic extends Component <PropsType, StateType>{
                             return(
                                 <div key={index} onClick={(e)=> this.props.setPostID(e,current.postID)} >
                                     <Link to='/post'>
-                                    {/* onClick={e=> this.props.setTopicID(e,current.TopicID)}  */}
-                                    {/* TopicID={current.TopicID} */}
                                     <div >
                               <div>{current.url === ""? null: <img src={current.url} alt={current.urlAltID} height='auto' width='75px'/>}</div> 
                                 <div>{current.postTitle}</div>
