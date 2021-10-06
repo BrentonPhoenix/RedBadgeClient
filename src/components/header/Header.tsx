@@ -1,10 +1,8 @@
 import { Component } from "react";
 import PropsType from "../Props.State/PropsType";
-// import StateType from "../Props.State/StateType";
-import { Link, Redirect } from 'react-router-dom'
-// import  Box , {BoxProps} from '@mui/material/Box'
+import { Link } from 'react-router-dom'
 import { Grid } from "@mui/material";
-
+import {Button} from "@mui/material"
 
 
 
@@ -39,7 +37,7 @@ class Header extends Component<PropsType, StateType> {
             role: "",
             urlProfilePic: "",
             urlProfilePicAltID: "",
-            // sessionToken: ""
+
         }
 
     }
@@ -58,22 +56,22 @@ class Header extends Component<PropsType, StateType> {
                 <Grid container xs={12} bgcolor="#41733A" justifyContent="flex-end">
                     <Grid item xs={1}  >
                 {
-                    this.props.role === "Admin" ? <Link to="/admin"><button>Admin</button></Link> : null
+                    this.props.role === "Admin" ? <Link to="/admin"><Button size="medium" color="warning" variant="contained">Admin</Button></Link> : null
 
                 }
                     </Grid>
 
                 <Grid item xs={1} >
-                    <Link to="/"><button>Home</button></Link>
+                    <Link to="/"><Button size="medium" variant="contained" color="info">Home</Button></Link>
                     </Grid>
                 <Grid xs={1} >
-                    <Link to="/profile"><button>Profile</button></Link>
+                    <Link to="/profile"><Button size="medium" variant="contained" color="info">Profile</Button></Link>
                     </Grid>
                 <Grid item  xs={1}>
-                    <Link to="/mytopics"><button>Topics</button></Link>
+                    <Link to="/mytopics"><Button size="medium" variant="contained" color="info">Topics</Button></Link>
                     </Grid>
                 <Grid item xs={1}>
-                    <button onClick={e => this.clearToken()}>Logout</button>
+                    <Button size="medium" variant="contained" color="info" onClick={e => this.clearToken()}>Logout</Button>
                     </Grid>
                 </Grid>  
             </div>

@@ -25,10 +25,6 @@ type PropsType={
     state: StateData,
     updateToken: any
     setLoginAndRole: any,
-    // handleSubmitRegister: any,
-    // fetchSetUserData: (e:React.ChangeEvent<HTMLInputElement>) => void,
-    // changeHandlerUsername: (e:React.ChangeEvent<HTMLInputElement>) => void,
-    // changeHandlerPassword: (e:React.ChangeEvent<HTMLInputElement>) => void
 }
 
 type StateType={
@@ -43,10 +39,10 @@ class Auth extends Component <PropsType,StateType>{
         return(
             <div>
                 <Grid container justifyContent='space-evenly' >
-                    <Grid item xs={6} border='5px solid black' padding="0px 0px 50px 0px" >
+                    <Grid item xs={6} border='5px solid black' padding="0px 0px 16px 0px" >
                 <Login  setLoginAndRole={this.props.setLoginAndRole}  updateToken={this.props.updateToken} state={this.props.state}/>
                 </Grid>
-                <Grid item xs={6} border='5px solid black' padding="0px 0px 50px 0px">
+                <Grid item xs={6} border='5px solid black' padding="0px 0px 16px 0px">
                 <Register   setLoginAndRole={this.props.setLoginAndRole}  updateToken={this.props.updateToken} state={this.props.state}/>
                 </Grid>
                 </Grid>
