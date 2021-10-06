@@ -1,8 +1,7 @@
 import { Component } from "react";
 import PropsType from "../Props.State/PropsType";
 import { Link } from 'react-router-dom'
-import { Grid } from "@mui/material";
-import {Button} from "@mui/material"
+import { Grid } from "@mui/material"
 
 
 
@@ -54,24 +53,24 @@ class Header extends Component<PropsType, StateType> {
             <div style={{width: '100%'}}>
                
                 <Grid container xs={12} bgcolor="#41733A" justifyContent="flex-end">
-                    <Grid item xs={1}  >
+                    <Grid item sm={1} xs={2}  >
                 {
-                    this.props.role === "Admin" ? <Link to="/admin"><Button size="medium" color="warning" variant="contained">Admin</Button></Link> : null
+                    this.props.role === "Admin" ? <Link to="/admin"><button>Admin</button></Link> : null
 
                 }
                     </Grid>
 
-                <Grid item xs={1} >
-                    <Link to="/"><Button size="medium" variant="contained" color="info">Home</Button></Link>
+                <Grid item sm={1} xs={2} >
+                    <Link to="/"><button>Home</button></Link>
                     </Grid>
-                <Grid xs={1} >
-                    <Link to="/profile"><Button size="medium" variant="contained" color="info">Profile</Button></Link>
+                <Grid item sm={1} xs={2} >
+                    <Link to="/profile"><button>Profile</button></Link>
                     </Grid>
-                <Grid item  xs={1}>
-                    <Link to="/mytopics"><Button size="medium" variant="contained" color="info">Topics</Button></Link>
+                <Grid item  sm={1} xs={2} >
+                    <Link to="/mytopics"><button >Topics</button></Link>
                     </Grid>
-                <Grid item xs={1}>
-                    <Button size="medium" variant="contained" color="info" onClick={e => this.clearToken()}>Logout</Button>
+                <Grid item sm={1} xs={2} >
+                    <button onClick={e => this.clearToken()}>Logout</button>
                     </Grid>
                 </Grid>  
             </div>

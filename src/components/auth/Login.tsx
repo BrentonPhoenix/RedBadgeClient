@@ -1,6 +1,6 @@
 import { Component } from "react";
 import APIURL from '../../helpers/environment'
-import {Button} from "@mui/material"
+
 
 
 type StateData = {
@@ -112,7 +112,7 @@ class Login extends Component<PropsType, StateType>{
                     <input type="password" value={this.props.state.password} onChange={(event) => this.changeHandlerPassword(event)} />
                     <br />
                     <br />
-                    <Button type="submit" size="medium" variant="contained" color="success">Login</Button>
+                    <button type="submit" >Login</button>
                 </form>
             </div>
         )

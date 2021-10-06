@@ -116,7 +116,7 @@ class Post extends Component<PropsType, StateType>{
                     {/* {this.state.singleFetchReturn.postKeywords} */}
                     {/* Content goes here */}
                     <br/>
-                    <Button onClick={this.deletePost} type="submit" size="medium" variant="contained" color="warning">delete</Button>
+                    <button onClick={this.deletePost} type="submit">Delete</button>
                 </div>
                 {/* <button onClick={this.testPostFetch}>Fetch</button> */}
                 <br />
@@ -135,7 +135,7 @@ class Post extends Component<PropsType, StateType>{
                     <input value={this.state.content} onChange={(e) => this.changeHandlerContent(e)} type="text" placeholder="content" />
                     <br />
                     <br />
-                    <Button type="submit" size="medium" variant="contained" color="info">Update Post</Button>
+                    <button type="submit">Update Post</button>
                 </form>
                 <br/>
                 <button onClick={e => console.log(this.props.state.postID)}>console.log postID</button>
