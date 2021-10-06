@@ -1,4 +1,4 @@
-#HyperSpace-SocialMedia 
+#HyperSpace-SocialMedia
 
 ---
 
@@ -10,36 +10,23 @@ This project is deployed to heroku along with the server here [HyperSpace-Social
 
 ---
 
-This project is intended to create a social media site that is tailored to people with ADHD. Currently it is a work in progress. 
+This project is intended to create a social media site that is tailored to people with ADHD. Currently it is a work in progress.
 Needs:
-    []-Styling
-
-    []-Input fields to expand functionality beyond the minimum
-
-        []1. set active to true 
-
-        []2. change active status 
-
-        []3. image altid
-
-        []4. EVENTUALLY color fields so people can change the theme manually 
-
-    []-profile with their active topics
-
-    []-friends list
-
-    []-comments
-
-    []-footer
-
-    []-Admin opitions
-
-    []-protected routes for the other components
-
-        []1. one by one **sigh** _assuming I don't figure out how to pass the components as a kind of prop, While still passing those components props_
-
-    []-and many many more i'm not listing out *everything* right this second. I'll update the list whenever i complete items i guess? maybe just when they're all done.
-    
+- Styling
+- Input fields to expand functionality beyond the minimum
+    -[] change communityLocked status 
+    -[] change active status 
+    -[] image altid
+    -[] EVENTUALLY color fields so people can change the theme manually 
+- profile with their active topics
+- friends list
+- comments
+- footer
+- Admin opitions
+- protected routes for the other components
+    -[] one by one _assuming I don't figure out how to pass the components as a kind of prop, While still passing those components props_
+- and many many more i'm not listing out *everything* right this second. I'll update the list whenever icomplete items i guess? maybe just when they're all done.
+- pagenation
 
 ---
 
@@ -54,7 +41,7 @@ Currently the functionality that exists within the client:
 2. Topics fetch requests functional *full CRUD*
     -Topics display properly 
 3. Post requests mostly functional except for 1 get request which is being annoying.
-4. Home switches display based on login status
+4. Home switches display based on login status, secondary page incomplete
 5. Logout functions as expected.
 6. Grid sort of works _technically_
 

@@ -1,5 +1,4 @@
 import { Component } from "react";
-// import StateType from "../Props.State/StateType";
 
 type PropsType={
     state: {}

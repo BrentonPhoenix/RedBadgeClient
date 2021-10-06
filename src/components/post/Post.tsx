@@ -1,5 +1,6 @@
 import APIURL from '../../helpers/environment'
 import { Component } from "react";
+import {Button} from '@mui/material'
 
 type StateData = {
     login: boolean,
@@ -106,27 +107,16 @@ class Post extends Component<PropsType, StateType>{
     render() {
         return (
             <div>
-                <h2>THis is the Post component</h2>Props PostID:
+                <h2>This is the Post component</h2>Props PostID:
                 {this.props.state.postID}
                 <div>
-
-                    <br />
-
                     {/* {this.state.singleFetchReturn.postID} */}
-
-                    <br />
-
                     {/* {this.state.singleFetchReturn} */}
-                    <br />
                     {/* {this.state.singleFetchReturn[0].postContent} */}
-                    <br />
                     {/* {this.state.singleFetchReturn.postKeywords} */}
-                    <br />
-                    {this.props.sessionToken}
                     {/* Content goes here */}
-                    <br />
-                    {/* <button onClick={this.updatePost}>update</button> */}
-                    <button onClick={this.deletePost}>delete</button>
+                    <br/>
+                    <Button onClick={this.deletePost} type="submit" size="medium" variant="contained" color="warning">delete</Button>
                 </div>
                 {/* <button onClick={this.testPostFetch}>Fetch</button> */}
                 <br />
@@ -144,8 +134,10 @@ class Post extends Component<PropsType, StateType>{
                     <label htmlFor="content" />
                     <input value={this.state.content} onChange={(e) => this.changeHandlerContent(e)} type="text" placeholder="content" />
                     <br />
-                    <button type='submit'>updatePost</button>
+                    <br />
+                    <Button type="submit" size="medium" variant="contained" color="info">Update Post</Button>
                 </form>
+                <br/>
                 <button onClick={e => console.log(this.props.state.postID)}>console.log postID</button>
                 <button onClick={e => console.log(this.state.singleFetchReturn)}>console.log fetch return</button>
             </div>

@@ -1,7 +1,7 @@
 import APIURL from '../../helpers/environment'
 import { Component } from "react";
 import { Link } from "react-router-dom";
-
+import { Button } from "@mui/material"
 
 
 type StateData = {
@@ -122,22 +122,21 @@ class MyTopics extends Component<PropsType, StateType> {
                         <label htmlFor="keywords" />
                         <input value={this.state.Keywords} onChange={(e) => this.changeHandlerKeywords(e)} type="text" placeholder="keywords" />
                         <br />
-                        <button type='submit'>Create Topic</button>
+                        <br />
+                        <Button type="submit" size="medium" variant="contained" color="info">Create Topic</Button>
                     </form>
-                    {/* <button onClick={()=> console.log(this.props.state.sessionToken)}>Console.log</button> */}
                 </div>
+                <br />
                 <div>
                     {this.state.fetchReturn !== ['this'] ?
                         this.state.fetchReturn.map((current: any, index: any) => {
                             return (
                                 <div key={index} onClick={e => this.props.setTopicID(e, current.TopicID)} >
-                                    {/* TopicID={current.TopicID} */}
                                     <Link to='/topic/' >
                                         <div >
-                                            <div>{current.url === "" ? null : <img src={current.url} alt={current.urlImageID} height='auto' width='75px'/>}</div>
+                                            <div>{current.url === "" ? null : <img src={current.url} alt={current.urlImageID} height='auto' width='75px' />}</div>
                                             <div>topic title:{current.TopicTitle}</div>
                                             <div>{current.Keywords}</div>
-                                            {/* <div>topic id: {current.TopicID}</div> */}
                                         </div>
                                     </Link>
 
@@ -145,8 +144,7 @@ class MyTopics extends Component<PropsType, StateType> {
                             )
                         })
                         : null}
-                    {/* <DisplayMyTopics fetchReturn={this.state.fetchReturn}/> */}
-
+                    <br />
                     <button onClick={() => console.log(this.state.fetchReturn)}>Console.log(fetch)</button>
                     <br />
                     <button onClick={() => console.log(this.props.sessionToken)}>Console.log(sessionToken)</button>

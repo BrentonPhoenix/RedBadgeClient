@@ -1,6 +1,7 @@
 import { Component } from "react";
 import { Link } from "react-router-dom";
 import APIURL from '../../helpers/environment'
+import {Button } from "@mui/material"
 
 type StateData={
     login: boolean,
@@ -197,13 +198,13 @@ class Topic extends Component <PropsType, StateType>{
                     <label htmlFor="keywords"/>
                     <input value={this.state.TopicKeywords} onChange={(e)=> this.changeHandlerTopicKeywords(e)} type="text" placeholder="keywords" />
                     <br/>
-                    {/* <button type='submit'>Create Topic</button> */}
-                    <button type='submit'>update</button>
+                    <br/>
+                    <Button type="button" size="medium" variant="contained" color="info">update</Button>
                     </form>
-                    {/* <button onClick={()=> console.log(this.props.state.sessionToken)}>Console.log</button> */}
+                  
                 </div>
                     <br/>
-                    <button onClick={this.deleteTopic}>delete</button>
+                    <Button type="button" size="medium" variant="contained" color="warning" onClick={this.deleteTopic}>delete</Button>
                 </div>
                 <br/>
                 <br/>
@@ -223,7 +224,8 @@ class Topic extends Component <PropsType, StateType>{
                     <label htmlFor="content"/>
                     <input value={this.state.content} onChange={(e)=> this.changeHandlerContent(e)} type="text" placeholder="content" />
                     <br/>
-                    <button type='submit'>Create Post</button>
+                    <br/>
+                    <Button type="submit" size="medium" variant="contained" color="info">Create Post</Button>
                     </form>
                 </div>
                 <div>

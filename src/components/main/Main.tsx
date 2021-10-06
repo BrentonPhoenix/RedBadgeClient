@@ -74,7 +74,6 @@ class Main extends Component<BoxProps, StateType>{
             sessionToken: "",
             TopicID: " ",
             postID: " "
-            // fetchReturn: []
             //eventual theme state goes here
         }
         this.updateToken = this.updateToken.bind(this)
@@ -82,14 +81,11 @@ class Main extends Component<BoxProps, StateType>{
         this.setPostID = this.setPostID.bind(this)
     }
 
-    //   Register Props
-
 
 
     updateToken(newToken: any, uUID: any) {
         localStorage.setItem('token', newToken)
         this.setState({ sessionToken: newToken, userUserID: uUID })
-        //add uUID to this in a bit
     }
 
 
@@ -108,7 +104,7 @@ class Main extends Component<BoxProps, StateType>{
     }
     setLoginAndRole = (role: any) => {
         if (true) {
-            this.setState({ role: role })
+            this.setState({role: role})
         }
     }
 
@@ -123,9 +119,6 @@ class Main extends Component<BoxProps, StateType>{
                     gridAutoColumns: '1fr',
                     gridAutoRows: '50px',
                     gap: 1,
-                    // position: "absolute"
-                   
-
                 }}>
                 <Item sx={{gridRow: 'span 1', gridColumn: "span 12", backgroundColor: '#41733A'}}>
                 <Header role={this.state.role} sessionToken={this.state.sessionToken} />
