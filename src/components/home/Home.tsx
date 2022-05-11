@@ -65,7 +65,6 @@ class Home extends Component<PropsType, StateType> {
             sessionToken: "",
             fetchReturn: []
         }
-        //     // this.communityLockedTopics = this.communityLockedTopics.bind(this)
     }
 
 
@@ -76,16 +75,11 @@ class Home extends Component<PropsType, StateType> {
             method: 'GET',
             headers: new Headers({
                 'Content-type': 'application/json',
-                // 'Authorization': `Bearer ${this.props.state.sessionToken}`
             })
         }).then(res => res.json())
             .then(json => this.setState({ fetchReturn: json }))
             .then(() => console.log(this.state.fetchReturn))
     }
-    // componentDidUpdate(){
-    //     console.log(this.state.fetchReturn)
-    // }
-    //fetch all topics where communityLocked = false on render
 
 
 

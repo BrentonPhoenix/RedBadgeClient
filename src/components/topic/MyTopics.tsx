@@ -45,7 +45,7 @@ class MyTopics extends Component<PropsType, StateType> {
             url: "",
             Keywords: "",
             Active: true,
-            fetchReturn: ['this']
+            fetchReturn: []
         }
         // this.fetchMyTopics = this.fetchMyTopics.bind(this)
         this.postTopic = this.postTopic.bind(this)

@@ -8,6 +8,7 @@ import Profile from '../bio/Profile'
 import MyTopics from "../topic/MyTopics";
 import Header from "../header/Header";
 import AdminRoute from '../protected-routes.tsx/AdminRoute'
+import Footer from "../footer/Footer";
 
 
 
@@ -137,6 +138,7 @@ class Main extends Component<BoxProps, StateType>{
                 </Switch>
                 </Item>
                 </Box>
+                <Footer></Footer>
             </div>
         )
     }

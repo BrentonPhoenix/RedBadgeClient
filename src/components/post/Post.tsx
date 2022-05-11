@@ -1,6 +1,5 @@
 import APIURL from '../../helpers/environment'
 import { Component } from "react";
-import {Button} from '@mui/material'
 
 type StateData = {
     login: boolean,
@@ -14,7 +13,6 @@ type StateData = {
     topicID?: string,
     singleFetchReturn?: any,
     fetchReturn?: any
-
 }
 
 type PropsType = {
@@ -45,7 +43,7 @@ class Post extends Component<PropsType, StateType>{
 
 
     componentDidMount() {
-        fetch(`${APIURL}/posts/${this.props.state.postID}`, {
+        fetch(`${APIURL}/posts/${this.props.postID}`, {
             method: 'GET',
             headers: new Headers({
                 'Content-type': 'application/json',
@@ -118,7 +116,6 @@ class Post extends Component<PropsType, StateType>{
                     <br/>
                     <button onClick={this.deletePost} type="submit">Delete</button>
                 </div>
-                {/* <button onClick={this.testPostFetch}>Fetch</button> */}
                 <br />
                 <br />
                 <form onSubmit={this.updatePost}>

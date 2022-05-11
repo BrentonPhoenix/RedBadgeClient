@@ -5,7 +5,6 @@ import { Component } from "react";
 type StateData={
     login: boolean,
     userUserID: string,
-    // username: string,
     role: string,
     isBanned: boolean,
     urlProfilePic: string,
